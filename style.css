@@ -1,0 +1,17 @@
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttons button{
+    width: 500px;
+    height: 200px;
+}
+.resultsDisplay{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,9 +1,6 @@
 let humanScore = 0;
 let CPUScore = 0;
 
-
-
-
 function getComputerChoice(){
     let number = Math.random()
     if (number < 1/3){
@@ -26,46 +23,63 @@ function getHumanChoice(){
     }
     }
 function playRound(humanChoice, CPUChoice){
-    if (humanChoice == CPUChoice){
-        console.log("Draw!");
+    if (humanScore < 4 && CPUScore < 4) {
+        if (humanChoice == CPUChoice){
+            document.querySelector(".resultsDisplay").textContent = "TIE! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
     }
     else if(humanChoice == "rock"){
         if(CPUChoice == "paper"){
-            console.log("You Lose!");
             CPUScore++;
+            document.querySelector(".resultsDisplay").textContent = "You LOST! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
         else if(CPUChoice == "scissors"){
-            console.log("You Win!");
             humanScore++;
+            document.querySelector(".resultsDisplay").textContent = "You WON! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
     }
     else if(humanChoice == "paper"){
         if(CPUChoice == "scissors"){
-            console.log("You Lose!");
             CPUScore++;
+            document.querySelector(".resultsDisplay").textContent = "You LOST! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
         else if(CPUChoice == "rock"){
-            console.log("You Win!");
             humanScore++;
+            document.querySelector(".resultsDisplay").textContent = "You WON! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
     }
     else if(humanChoice == "scissors"){
         if(CPUChoice == "rock"){
-            console.log("You Lose!");
             CPUScore++;
+            document.querySelector(".resultsDisplay").textContent = "You LOST! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
         else if(CPUChoice == "paper"){
-            console.log("You Win!");
             humanScore++;
+            document.querySelector(".resultsDisplay").textContent = "You WON! Your Score: " + humanScore + " CPU Score: " + CPUScore;  
         }
     }
 }
-function playGame(){
-    for(i=0; i<6;i++){
-        playGame(getHumanChoice(),getComputerChoice());
+    else {
+        if (CPUChoice == 5) { document.querySelector(".resultsDisplay").textContent = "YOU HAVE BEEN DEFEATED BY THE CPU."}
+        else { document.querySelector(".resultsDisplay").textContent = "YOU HAVE DEFEATED THE CPU."}
     }
-    console.log(humanScore);
-    console.log(CPUScore);
 }
-playGame();
+
+const rockButton = document.querySelector("#rockButton");
+const paperButton = document.querySelector('#paperButton');
+const scissorsButton = document.querySelector('#scissorsButton');
+
+rockButton.addEventListener('click', () => {
+    playRound('rock', getComputerChoice());
+})
+
+paperButton.addEventListener('click', () => {
+    playRound('paper', getComputerChoice());
+})
+
+scissorsButton.addEventListener('click', () => {
+    playRound('scissors', getComputerChoice());
+})
+
+
+
 
